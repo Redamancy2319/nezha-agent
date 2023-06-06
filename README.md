@@ -3,7 +3,7 @@
 [Dockerhub主页](https://hub.docker.com/r/redamancy2319/nezha-agent)
 
 因为官方并不提供docker版本的Agent，现学了一点docker和shell写出的小玩具  
-由于Docker的特性，***系统版本和磁盘大小不能被正确读取，网页终端和定时任务功能无效*** 
+由于Docker的特性，***系统版本和网速不能被正确读取，网页终端和定时任务功能无效***
 
 ***
 ## 使用教程
@@ -12,7 +12,7 @@
 ```shell
 docker run -d -e panel_domain='<面板域名>' -e port='<面板端口>' -e secret='<节点密钥>' redamancy2319/nezha-agent:latest
 ```
-多开可重复执行上方命令，替换为不同面板的域名和端口
+多开可重复执行上方命令，替换为不同面板的参数
 
 #### 在容器云上手动安装  
 
