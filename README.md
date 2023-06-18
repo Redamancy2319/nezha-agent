@@ -29,7 +29,7 @@ docker run -d -e panel_domain='<面板域名>' -e port='<面板端口>' -e secre
 ```shell
 docker exec -it <容器名> nezha-agent --edit-agent-config
 ```
-网络接口在大部分情况下只需要单独选择eth0，硬盘分区应选择/mnt/host目录
+网络接口在大部分情况下只需要单独选择eth0，硬盘分区应选择/mnt/host目录  
 每次修改后都需要重启nezha-agent  
 ```shell
 docker exec -it <容器名> pkill nezha-agent
