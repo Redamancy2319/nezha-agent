@@ -1,8 +1,8 @@
 FROM alpine:latest
 
-ARG NEZHA_VER=0.15.2
+ARG NEZHA_VER=0.15.3
 
-ENV domain=localhost port=5555 secret=password args=--disable-command-execute platform=Linux version=
+ENV domain=localhost port=5555 secret=password args=--disable-command-execute --disable-auto-update --disable-auto-update platform=Linux version=
 
 WORKDIR /usr/local/bin
 

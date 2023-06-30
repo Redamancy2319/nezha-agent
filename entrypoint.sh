@@ -10,7 +10,7 @@ autostart=true
 autorestart=true
 EOF
 
-#platform simulate
+#modify platform
 if [ -n "${platform}" ] && [ -n "${version}" ]; then
     sed -i "s/^ID=.*/ID=${platform}/" /etc/os-release
     sed -i "s/^VERSION_ID=.*/VERSION=${version}/" /etc/os-release
