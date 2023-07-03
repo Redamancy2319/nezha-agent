@@ -9,7 +9,7 @@
 ## 使用教程
 #### 一键命令(需要预装Docker环境)
 ```shell
-docker run -d -e domain='<面板域名>' -e port='<面板端口>' -e secret='<节点密钥>' -e platform='<自定义系统发行版名>:' -e version='<自定义系统版本>' -v /mnt:/mnt/host:ro --net='host' --name='<容器名>' redamancy2319/nezha-agent:latest
+docker run -d -e domain='<面板域名>' -e port='<面板端口>' -e secret='<节点密钥>' -e platform='<自定义系统发行版名>:' -e version='<自定义系统版本>' --net='host' --name='<容器名>' redamancy2319/nezha-agent:latest
 ```
 多开可重复执行上方命令，替换为不同面板的参数，容器名不可重复
 #### 在容器云上手动安装  
@@ -32,9 +32,8 @@ docker run -d -e domain='<面板域名>' -e port='<面板端口>' -e secret='<�
 ```shell
 docker exec -it <容器名> nezha-agent --edit-agent-config
 ```
-网络接口通常只需要选择eth或enp开头的网络接口，硬盘分区应选择/mnt/host目录下所有分区
+网络接口通常只需要选择eth或enp开头的网络接口，硬盘分区应选择所有分区
 每次修改后都需要重启nezha-agent  
-
 ```shell
 docker exec -it <容器名> pkill nezha-agent
 ```
@@ -75,6 +74,10 @@ Docker 运行时修改系统版本
 ```shell
 docker exec -it <容器名> sed -i "s/^VERSION=.*/VERSION=<新的系统版本>/" /etc/os-release
 ```
+每次修改后都需要重启nezha-agent
+```shell
+docker exec -it <容器名> pkill nezha-agent
+``` 
 ***
 ## 哪吒监控源项目
 
