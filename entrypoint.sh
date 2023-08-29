@@ -14,7 +14,7 @@ if [ -n "${platform}" ] || [ -n "${version}" ]; then
     fi
 
     if [ -n "${version}" ]; then
-        sed -i "s/^VERSION_ID=.*/VERSION_ID=${version}/" /etc/os-release
+        sed -i "s/^VERSION=.*/VERSION=${version}/" /etc/os-release
     fi
 fi
 
