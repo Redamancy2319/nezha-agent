@@ -36,3 +36,4 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           repository: redamancy2319/nezha-agent
+          readme-filepath: ./README.md
