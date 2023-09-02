@@ -29,11 +29,3 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64, linux/386
           tags: redamancy2319/nezha-agent:latest
-      -    
-        name: Update repo description
-        uses: peter-evans/dockerhub-description@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-          repository: redamancy2319/nezha-agent
-          readme-filepath: ./README.md
