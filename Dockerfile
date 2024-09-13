@@ -16,21 +16,21 @@ RUN apt-get update && \
     arch=$(uname -m | sed "s#x86_64#amd64#; s#aarch64#arm64#; s#i386#386#") && \  
     wget -O ./nezha-agent.zip -t 4 -T 5 "https://github.com/nezhahq/agent/releases/download/v${NEZHA_VER}/nezha-agent_linux_${arch}.zip" && \
     unzip ./nezha-agent.zip && \
-    rm -f ./nezha-agent.zip && \
-    chmod +x ./nezha-agent
+    rm -f ./nezha-agent.zip && \    
+    chmod +x ./nezha-agent  
 
 # 配置 Nginx 的默认服务器
 RUN echo 'server { \
-    listen 80; \
+    listen 10000; \  
     server_name localhost; \
     location / { \
-        root /usr/share/nginx/html; \
+        root /usr/share/nginx/html; \  
         index index.html; \
     } \
 }' > /etc/nginx/conf.d/default.conf
 
 # 暴露 HTTP 端口
-EXPOSE 80
+EXPOSE 10000  
 
 # 使用 tini 作为进程管理器，启动 Nginx 和 nezha-agent
 CMD ["/usr/bin/tini", "-g", "--", "sh", "-c", "service nginx start && ./nezha-agent -s ${domain}:${port} -p ${secret} ${args}"]
