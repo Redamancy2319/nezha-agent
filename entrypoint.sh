@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #check domain and secret variables
-if [[ -z "${domain}" || -z "${secret}" ]]; then    
+if [[ -z "${_DOMAIN}" || -z "${_SECRET}" ]]; then      
     echo "Domain and secret cannot be empty!"
     exit 1
 fi
@@ -18,4 +18,4 @@ if [ -n "${platform}" ] || [ -n "${version}" ]; then 
     fi
 fi
 
-exec /usr/local/bin/nezha-agent -s ${domain}:${port} -p ${secret} ${args}    
+exec /usr/local/bin/nezha-agent -s ${_DOMAIN}:${port} -p ${_SECRET} ${args}      
