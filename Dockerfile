@@ -20,11 +20,11 @@ RUN apt-get update && \
     wget -O ./nezha-agent.zip -t 4 -T 5 "https://github.com/nezhahq/agent/releases/download/v${NEZHA_VER}/nezha-agent_linux_${arch}.zip" && \
     unzip ./nezha-agent.zip && \
     rm -f ./nezha-agent.zip && \
-    chmod +x ./nezha-agent && \
+    chmod +x ./nezha-agent && \  
     chmod +x ./entrypoint.sh
 
 # 暴露 HTTP 端口 8080
-EXPOSE 8080
+EXPOSE 80
 
 # 使用 tini 作为进程管理器，启动 Python HTTP 服务器 和 nezha-agent
 ENTRYPOINT ["/usr/bin/tini", "-g", "--", "sh", "-c", "python3 -m http.server 8080 --bind 0.0.0.0 & ./nezha-agent -s ${domain}:${port} -p ${secret} ${args}"]
