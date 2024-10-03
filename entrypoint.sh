@@ -1,13 +1,13 @@
 #!/bin/bash
 
 #check domain and secret variables
-if [[ -z "${_DOMAIN}" || -z "${_SECRET}" ]]; then  
+if [[ -z "${domain}" || -z "${secret}" ]]; then    
     echo "Domain and secret cannot be empty!"
     exit 1
 fi
 
 #modify platform
-if [ -n "${platform}" ] || [ -n "${version}" ]; then
+if [ -n "${platform}" ] || [ -n "${version}" ]; then  
     rm -f /etc/debian_version
     if [ -n "${platform}" ]; then
         sed -i "s/^ID=.*/ID=${platform}/" /etc/os-release
@@ -18,4 +18,4 @@ if [ -n "${platform}" ] || [ -n "${version}" ]; then
     fi
 fi
 
-exec /usr/local/bin/nezha-agent -s ${_DOMAIN}:${port} -p ${_SECRET} ${args}  
+exec /usr/local/bin/nezha-agent -s ${domain}:${port} -p ${secret} ${args}    
