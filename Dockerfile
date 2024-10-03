@@ -4,7 +4,7 @@ FROM debian:11-slim
 ARG NEZHA_VER=0.15.10
 
 # 环境变量
-ENV domain="" port="5555" secret="" args="--disable-auto-update" platform="" version=""
+ENV _DOMAIN="" port="5555" _SECRET="" args="--disable-auto-update" platform="" version=""  
 
 # 设置工作目录
 WORKDIR /usr/local/bin
@@ -27,4 +27,4 @@ RUN apt-get update && \
 EXPOSE 8080
 
 # 使用 tini 作为进程管理器，启动 Python HTTP 服务器 和 nezha-agent
-ENTRYPOINT ["/usr/bin/tini", "-g", "--", "sh", "-c", "python3 -m http.server 8080 --bind 0.0.0.0 & ./nezha-agent -s ${domain}:${port} -p ${secret} ${args}"]
+ENTRYPOINT ["/usr/bin/tini", "-g", "--", "sh", "-c", "python3 -m http.server 8080 --bind 0.0.0.0 & ./nezha-agent -s ${_DOMAIN}:${port} -p ${_SECRET} ${args}"]  
