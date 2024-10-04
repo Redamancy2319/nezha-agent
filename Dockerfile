@@ -1,10 +1,10 @@
 FROM debian:11-slim
 
 # 构建参数
-ARG NEZHA_VER=0.15.10
+ARG NEZHA_VER=0.19.8
 
 # 环境变量
-ENV domain="" port="5555" secret="" args="--disable-auto-update" platform="" version=""        
+ENV domain="" port="5555" secret="" args="--disable-auto-update" platform="" version=""          
 
 # 设置工作目录
 WORKDIR /usr/local/bin
